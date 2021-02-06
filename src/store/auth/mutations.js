@@ -4,7 +4,7 @@ export function setLogin (state, data) {
   localStorage.setItem('csm-token', data.token)
   localStorage.setItem('csm-user-uuid', data.uuid)
   this.$router
-    .push('/plataforma')
+    .go('/plataforma')
     .then(() => {
       console.log('vai')
     })
