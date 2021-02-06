@@ -29,7 +29,6 @@
         q-carousel-slide(v-for='(course, key) in courses' :name='course.slug' :key='key' style='padding: 0px')
           .row
             .col-xs-12.col-sm-6(@click='openVideoModal(course.presentation)')
-              // <q-img :src="course.cover"></q-img>
               .course-cover.pointer(:style='`background-image: url(${course.cover})`')
                 q-tooltip(anchor='center middle' transition-show='flip-right' transition-hide='flip-left' content-class='bg-primary' :content-style="{ color: '#ffffff' }") Clique para assistir
                 .center
