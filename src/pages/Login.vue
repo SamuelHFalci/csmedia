@@ -33,10 +33,9 @@ export default {
       await this.login({
         email: this.email,
         password: this.password
+      }).then(() => {
+        this.$q.loading.hide()
       })
-      const isLoggedIn = localStorage.getItem('csm-user-uuid')
-
-      if (isLoggedIn) this.$router.push('/plataforma')
     }
   }
 }

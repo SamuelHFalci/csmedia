@@ -72,7 +72,6 @@ export default {
     }
   },
   async mounted () {
-    this.$q.loading.show()
     const otherCourses = []
     const userCourses = []
     await this.$db()
@@ -111,8 +110,6 @@ export default {
         this.userCourses.push(course)
       } else this.otherCourses.push(course)
     })
-
-    this.$q.loading.hide()
   }
 }
 </script>
