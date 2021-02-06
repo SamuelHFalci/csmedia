@@ -169,7 +169,7 @@ export default {
 }
 .parallax-img-2 {
   /* The image used */
-  background-image: url('../assets/images/workshopsBanner.jpg');
+  background-image: url('../assets/images/introBanner.jpg');
 }
 .center {
   margin: 0;
