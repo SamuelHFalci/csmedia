@@ -133,16 +133,17 @@ export default {
     }
   },
   async mounted () {
-    // const courses = await this.$db()
-    //   .collection('cursos')
-    //   .get()
-    //   .then(documents => {
-    //     documents.forEach(element => {
-    //       console.log('tttttttttttttttttt', element.data())
-    //       this.courses.push(element.data())
-    //     })
-    //   })
-    // console.log('cursossss', courses)
+    const courses = await this.$db()
+      .collection('cursos')
+      .get()
+      .then(documents => {
+        documents.forEach(element => {
+          console.log('tttttttttttttttttt', element.data())
+          this.courses.push(element.data())
+        })
+      })
+    console.log('cursossss', courses)
+    console.log('cursossssssssssssssss', this.courses)
   }
 }
 </script>

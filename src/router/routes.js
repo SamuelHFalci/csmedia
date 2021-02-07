@@ -7,7 +7,7 @@ const routes = [
         path: '',
         component: () => import('layouts/Public.vue'),
         children: [
-          { path: '', component: () => import('pages/Caralho.vue') },
+          { path: '', component: () => import('pages/Index.vue') },
           { path: 'login', component: () => import('pages/Login.vue') }
         ]
       },
