@@ -138,7 +138,7 @@ export default {
       .get()
       .then(documents => {
         documents.forEach(element => {
-          console.log('tttttttttttttttttt', element.data())
+          console.log('tttttttttttttsttttt', element.data())
           this.courses.push(element.data())
         })
       })
