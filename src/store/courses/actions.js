@@ -1,20 +1,51 @@
 export async function getUserCourses () {
   const uuid = localStorage.getItem('csm-user-uuid')
-  const user = await this._vm
+  const allCourses = []
+  const userCourses = []
+  await this._vm
     .$db()
     .collection('users')
     .where('uuid', '==', uuid)
     .get()
-  const courses = user.docs[0].data().courses
-  const coursesInformation = await Promise.all(
-    courses.map(async course => {
-      const data = await this._vm
-        .$db()
-        .collection('cursos')
-        .doc(course)
-        .get()
-      return data.data()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        const courses = doc.data().courses
+        courses.map(course => {
+          userCourses.push(course)
+        })
+      })
     })
-  )
-  console.log(coursesInformation)
+    .catch(function (error) {
+      console.log('Error getting documents: ', error)
+    })
+  await this._vm
+    .$db()
+    .collection('cursos')
+    .get()
+    .then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        // doc.data() is never undefined for query doc snapshots
+        allCourses.push(doc.data())
+      })
+    })
+    .catch(function (error) {
+      console.log('Error getting documents: ', error)
+    })
+  return {
+    userCourses,
+    allCourses
+  }
+}
+
+export async function getCourseBySlug ({ commit }, slug) {
+  let course
+  await this._vm
+    .$db()
+    .collection('cursos')
+    .where('slug', '==', slug)
+    .get()
+    .then(querySnapshot => {
+      course = querySnapshot.docs[0].data()
+    })
+  return course
 }

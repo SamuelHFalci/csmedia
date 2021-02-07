@@ -22,9 +22,11 @@
       .center
         q-icon.s35rem(name='play_circle_outline')
     div(ref='cursos')
+    | {{courses}}
     section.q-mt-xl.q-mb-xl
       .row.justify-center
         p.home-title.q-mt-xl CURSOS
+
       q-carousel.bg-secondary.text-white.shadow-1.rounded-borders(v-model='slide' transition-prev='scale' transition-next='scale' swipeable='' animated='' control-color='white' navigation='' arrows='' height='auto')
         q-carousel-slide(v-for='(course, key) in courses' :name='course.slug' :key='key' style='padding: 0px')
           .row
@@ -95,7 +97,7 @@ export default {
   },
   data () {
     return {
-      slide: 'harmonia',
+      slide: 'guitarra',
       videoId: '1t8mX2LS_HE',
       courses: [],
       playerVars: {
@@ -131,15 +133,16 @@ export default {
     }
   },
   async mounted () {
-    await this.$db()
-      .collection('cursos')
-      .get()
-      .then(documents => {
-        documents.forEach(element => {
-          console.log(element.data())
-          this.courses.push(element.data())
-        })
-      })
+    // const courses = await this.$db()
+    //   .collection('cursos')
+    //   .get()
+    //   .then(documents => {
+    //     documents.forEach(element => {
+    //       console.log('tttttttttttttttttt', element.data())
+    //       this.courses.push(element.data())
+    //     })
+    //   })
+    // console.log('cursossss', courses)
   }
 }
 </script>
