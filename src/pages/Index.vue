@@ -22,7 +22,6 @@
       .center
         q-icon.s35rem(name='play_circle_outline')
     div(ref='cursos')
-    | {{courses}}
     section.q-mt-xl.q-mb-xl
       .row.justify-center
         p.home-title.q-mt-xl CURSOS
@@ -138,7 +137,6 @@ export default {
       .get()
       .then(documents => {
         documents.forEach(element => {
-          console.log('tttttttttttttsttttt', element.data())
           this.courses.push(element.data())
         })
       })
