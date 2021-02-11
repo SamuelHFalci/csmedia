@@ -36,7 +36,9 @@ export default {
     },
     goToCourse (course) {
       const isOwned = this.checkOwnership(course.docRef)
-      if (isOwned) { this.$router.push({ path: `plataforma/curso/${course.slug}` }) }
+      if (isOwned) {
+        this.$router.push({ path: `plataforma/curso/${course.slug}` })
+      }
     }
   }
 }

@@ -132,7 +132,7 @@ export default {
     }
   },
   async mounted () {
-    const courses = await this.$db()
+    await this.$db()
       .collection('cursos')
       .get()
       .then(documents => {
@@ -140,8 +140,6 @@ export default {
           this.courses.push(element.data())
         })
       })
-    console.log('cursossss', courses)
-    console.log('cursossssssssssssssss', this.courses)
   }
 }
 </script>
